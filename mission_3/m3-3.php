@@ -25,25 +25,29 @@
             <input type="submit" name="del_button" value="削除">
         </div>
     </form>
+    
+    //あまりうまく書けていないので参考程度にしてください
+    
     <?php
         $filename = "m3-3.txt";
-        if(file_exists($filename)){
+        if(file_exists($filename)){ //反省：最初から空のテキストファイルを作っておけばわざわざこんな分岐をしなくてよかった。
             $nums = [];
             $lines = file($filename, FILE_IGNORE_NEW_LINES);
             $formdata_arrays = [];
             foreach($lines as $line){
                 $formdata_array = explode("<>", $line);
-                $nums[] = intval($formdata_array[0]); //$numsはint型
+                $nums[] = intval($formdata_array[0]); //$numsの中身はint型
                 $formdata_arrays[] = $formdata_array; //$formdata_arraysは二次元配列
-                if(empty($_POST["del_button"])){//削除対象番号が入力されている場合は削除後のものを書くのでいらない
+                if(empty($_POST["del_button"])){ //削除対象番号が入力されている場合は削除後のものを書くのでいらない
                     foreach($formdata_array as $formdata){
                         echo $formdata . " "; //テキストファイルの中身を表示
                     }
                     echo "<br>";
                 }
-                $num = end($nums) + 1;
+                                        //反省：ここに削除機能をいれたほうが書くこと少なくて済む。
+                $num = end($nums) + 1; 
             }
-        }else{
+        }else{ //反省：最初にfile_exists()を使わないなら、if(empty($nums))とかでできる
             $num = 1;
         }
         
