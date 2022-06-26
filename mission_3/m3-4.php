@@ -47,7 +47,7 @@
             $num = intval($formdata_array[0]); //読み込んだ行の投稿番号
             
             
-            if(empty($_POST["submit"]) && empty($_POST["del_button"])){ //操作をしていないとき
+            if(empty($_POST["submit"]) && empty($_POST["del_button"])){ //送信ボタンや削除ボタンを押していないとき。送信や削除の場合の表示は、ループ中にあります。
                 foreach($formdata_array as $formdata){
                     echo $formdata . " "; //テキストファイルの中身を表示
                 }
