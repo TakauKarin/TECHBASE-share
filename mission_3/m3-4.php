@@ -125,16 +125,16 @@
             fclose($fp);
         }
         
-        if(isset($ed_name)){
-            $_SESSION["ed_num"] = $ed_num;
+        if(isset($ed_name)){ //編集ボタンが押され、かつ名前やコメントを正常に取得できているとき
+            $_SESSION["ed_num"] = $ed_num; //値を保持
             $_SESSION["ed_name"] = $ed_name;
             $_SESSION["ed_comment"] = $ed_comment;
-        }else{
+        }else{ //編集ボタン以外を操作したとき
             $_SESSION["ed_num"] = "";
             $_SESSION["ed_name"] = "";
             $_SESSION["ed_comment"] = "";
         }
-        if(isset($_POST["ed_button"])){
+        if(isset($_POST["ed_button"])){ //編集ボタンが押されたときは、処理を終えたあとにブラウザを更新する
             header("Location: " . $_SERVER['PHP_SELF']);
         }
 
