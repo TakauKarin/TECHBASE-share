@@ -5,6 +5,9 @@
     <title>mission_3-5</title>
 </head>
 <body>
+    
+    //途中です
+    
     <?php
         session_start();
         if($_SERVER["REQUEST_METHOD"] != "POST"){
@@ -56,6 +59,10 @@
             <input type="text" name="ed_num" value="<?php if(!empty($_SESSION["ed_num"])){echo $_SESSION["ed_num"];}?>">
         </div>
     </form>
+    
+    //途中です
+    
+    
     <?php
         $filename = "m3-5.txt";
         $lines = file($filename, FILE_IGNORE_NEW_LINES);
@@ -108,7 +115,7 @@
                 }
                 
                 if(isset($_POST["ed_button"]) && isset($_POST["edit"])){ //編集ボタンが押されたときの処理
-                    $ed_num = $_POST["edit"];     //パスワードチェックあとでやる
+                    $ed_num = $_POST["edit"];     //パスワードチェック　まだやってない
                     if($num == $ed_num){
                         $ed_name = $formdata_array[1];
                         $ed_comment = $formdata_array[2];
