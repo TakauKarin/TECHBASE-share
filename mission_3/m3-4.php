@@ -38,6 +38,10 @@
         </div>
     </form>
     <?php
+        
+        //ファイルが空のときの処理のしかたが間違っていますすみません！！
+    
+    
         $filename = "m3-4.txt";
         $lines = file($filename, FILE_IGNORE_NEW_LINES);
         $count_lines = count($lines); //行数
