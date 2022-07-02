@@ -170,7 +170,7 @@
             <input type="submit" name="ed_button" value="編集">
         </div>
         <div>
-            <input type="text" name="ed_num" value="<?php if(!empty($ed_num)){echo $ed_num;}?>">
+            <input type="hidden" name="ed_num" value="<?php if(!empty($ed_num)){echo $ed_num;}?>">
         </div>
     </form>    
         
