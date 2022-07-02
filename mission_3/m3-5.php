@@ -24,7 +24,7 @@
             $formdata_arrays[] = explode("<>", $line); //配列を$formdata_arraysに追加していく。二次元配列になる。
         }
         $count_lines = count($lines); //行数
-        $error = "";
+        $error = "";     //この3つはエラー確認のための変数です。すみません変数の作り方が雑過ぎて少し変なのでわかりにくいかもです
         $error_num = "";
         $error_pass = "";
         
@@ -130,7 +130,7 @@
     <h2>昨日の夜ごはん</h2>
     
     <form action="" method="post">
-        <div>
+        <div>                       //本当はちゃんとCSSかテーブルとか使ってやったほうがいいはずですが面倒だったのでラベルのあとに空白を入れて揃えました、、
             <label for="name">名前　　　　</label>
             <input type="text" id="name" name="name" value="<?php if(!empty($ed_name)){echo $ed_name;}?>">
         </div>
