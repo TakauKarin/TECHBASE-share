@@ -4,8 +4,19 @@
     <meta charset="UTF-8">
     <title>mission_3-5</title>
 </head>
-<body>
+<body>    
     <?php
+    
+    /*はじめはファイルに書き込むなどの処理だけする。ブラウザに表示はしない。
+    
+    いきなり$_POSTが出てきますが、ボタンを押してPOST送信をした場合は、formを再度読み込むまでは$_POSTに値が保持されるようです。
+    header()を使うとGET送信になるっぽいので$_POSTの中身は消えてしまいます。
+    逆に、私がいろいろ試したかんじでは、多分$_SESSIONはPOST送信のとき（つまりボタンが押されたとき）は値を保持していないと思われます。
+    なので、$_SESSIONにはheader()で読み込んだときのみ値を持ち越せているのだと思います。
+    
+    どちらでもできるのでどっちを使っても良いとは思いますが、ボタンを押す動作がpost送信なのにわざわざsessionでやると複雑になってしまうなと反省したので、今回は$_POSTを使って書きました。
+    */
+    
         $filename = "m3-5.txt";
         $lines = file($filename, FILE_IGNORE_NEW_LINES);
         $formdata_arrays = [];
@@ -112,8 +123,10 @@
             }
         }
         
-        
     ?>
+    
+    //ここからブラウザに表示。
+    
     <h2>昨日の夜ごはん</h2>
     
     <form action="" method="post">
@@ -164,16 +177,16 @@
     <?php    
         echo "<br>";
         
-        $lines = file($filename, FILE_IGNORE_NEW_LINES); //書き換えたものをもう一度読み込む
+        $lines = file($filename, FILE_IGNORE_NEW_LINES); //上のほうで書き換えたファイルを読み込む
         foreach($lines as $line){
-            $formdata_array = explode("<>", $line); //配列を$formdata_arraysについかしていく。二次元配列になる。
+            $formdata_array = explode("<>", $line); //配列を$formdata_arraysに追加していく。二次元配列になる。
             for($i=0; $i<4; $i++){  
                 echo $formdata_array[$i] . "  ";
             }
             echo "<br>";
         }
         
-        
+        //エラーがあったら表示していく
         
         if(empty($lines)){
             echo "投稿がありません<br>";
